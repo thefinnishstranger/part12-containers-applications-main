@@ -1,0 +1,19 @@
+Script started on Mon Jul 15 17:14:48 2024
+[1m[7m%[27m[1m[0m                                                                                                                      ]7;file://NikolasacStudio.lan/Users/nikolasgustavson/downloads/part12-containers-applications-main[0m[27m[24m[Jnikolasgustavson@NikolasacStudio part12-containers-applications-main % [K[?2004heecho "hello"[?2004l
+hello
+[1m[7m%[27m[1m[0m                                                                                                                      ]7;file://NikolasacStudio.lan/Users/nikolasgustavson/downloads/part12-containers-applications-main[0m[27m[24m[Jnikolasgustavson@NikolasacStudio part12-containers-applications-main % [K[?2004hccurl http://helsinki.fi[?2004l
+<html>
+<head><title>301 Moved Permanently</title></head>
+<body>
+<center><h1>301 Moved Permanently</h1></center>
+<hr><center>nginx/1.22.1</center>
+</body>
+</html>
+[1m[7m%[27m[1m[0m                                                                                                                      ]7;file://NikolasacStudio.lan/Users/nikolasgustavson/downloads/part12-containers-applications-main[0m[27m[24m[Jnikolasgustavson@NikolasacStudio part12-containers-applications-main % [K[?2004heexit[?2004l
+
+Saving session...
+...copying shared history...
+...saving history...truncating history files...
+...completed.
+
+Script done on Mon Jul 15 17:15:39 2024

@@ -1,0 +1,541 @@
+Script started on Tue Jul 16 12:12:44 2024
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jnikolasgustavson@NikolasacStudio todo-backend % [K[?2004hddocker exec -it         container ls[?2004l
+CONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                     NAMES
+7750fe6979d8   nginx     "/docker-entrypoint.…"   7 minutes ago    Up 7 minutes    0.0.0.0:8080->80/tcp      bold_khayyam
+c19556198e8d   mongo     "docker-entrypoint.s…"   42 minutes ago   Up 42 minutes   0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jnikolasgustavson@NikolasacStudio todo-backend % [K[?2004hddocker exec -it todo-backend-mongo-1 bash[?2004l
+[?2004hroot@c19556198e8d:/# mongosh
+[?2004l]0;mongosh mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	669639c483a3e85d80f3f54d
+Connecting to:		[1m[32mmongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.10[0m
+Using MongoDB:		7.0.12
+[1m[33mUsing Mongosh[0m:		2.2.10
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+[1G[0J [1G[1G[0Jtest> [7Gsg[1G[0Jtest> s[8Ghow dbs
+Uncaught [1m[31mMongoServerError[0m[1m[31m[Unauthorized][0m: Command listDatabases requires authentication
+[1G[0Jtest> [7Gexit
+[?2004hroot@c19556198e8d:/# mongosh -u root -p example
+[?2004l]0;mongosh mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000Current Mongosh Log ID:	66963a229c5acb83b5f3f54d
+Connecting to:		[1m[32mmongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.10[0m
+Using MongoDB:		7.0.12
+[1m[33mUsing Mongosh[0m:		2.2.10
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+[1G[0J [1G[1m[33m------[0m
+   [1m[33mThe server generated these startup warnings when booting[0m
+   2024-07-16T08:31:06.941+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-07-16T08:31:07.723+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version
+   2024-07-16T08:31:07.723+00:00: vm.max_map_count is too low
+[1m[33m------[0m
+
+[1G[0Jtest> [7Gshow dbs
+[1madmin[0m         100.00 KiB
+[1mconfig[0m         72.00 KiB
+[1mlocal[0m          72.00 KiB
+[1mthe_database[0m   40.00 KiB
+[1G[0Jtest> [7Guse the_database
+switched to db the_database
+[1G[0Jthe_database> [15Gshow collections
+[1mtodos[0m
+[1G[0Jthe_database> [15Gdb.todos.fin({})
+Uncaught [1m[31mTypeError[0m: db.todos.fin is not a function
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.fin({})[31G[1D[1G[0Jthe_database> db.todos.fin[44m([49m{})[30G[1D[1G[0Jthe_database> db.todos.fin([44m{[49m})[29G[1D[1G[0Jthe_database> db.todos.fin({[44m}[49m)[28G[1D[1G[0Jthe_database> db.todos.fin({}[44m)[49m[27G[1D[1G[0Jthe_database> db.todos.fin({})[26G[1C[1G[0Jthe_database> db.todos.fin({}[44m)[49m[27G[1G[0Jthe_database> db.todos.find({}[44m)[49m[28G[4C[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId([32m'66962fc9d4d4a2fc5df3f54e'[39m),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId([32m'66962fc9d4d4a2fc5df3f54f'[39m),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gdb.collection.insertOne()[1D[1G[0Jthe_database> db.collection.insertOne[44m([49m)[39G[1C[1G[0Jthe_database> db.collection.insertOne()[40G[1D[1G[0Jthe_database> db.collection.insertOne[44m([49m)[39G[1G[0Jthe_database> db.collection.insertOne[44m([49m{)[40G[1G[0Jthe_database> db.collection.insertOne[44m([49m{})[41G[1D[1G[0Jthe_database> db.collection.insertOne([44m{[49m})[40G[1G[0Jthe_database> db.collection.insertOne([44m{[49mt})[41G[1G[0Jthe_database> db.collection.insertOne([44m{[49mte})[42G[1G[0Jthe_database> db.collection.insertOne([44m{[49mtex})[43G[1G[0Jthe_database> db.collection.insertOne([44m{[49mtext})[44G[1C[1G[0Jthe_database> db.collection.insertOne[44m([49m{text})[45G[1D[1G[0Jthe_database> db.collection.insertOne([44m{[49mtext})[44G[1D[1G[0Jthe_database> db.collection.insertOne({text})[43G[1G[0Jthe_database> db.collection.insertOne({[33mtex[39m:t})[44G[1G[0Jthe_database> db.collection.insertOne({text})[43G[1C[1G[0Jthe_database> db.collection.insertOne([44m{[49mtext})[44G[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m:})[45G[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: })[46G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"})[39m[47G[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m""[39m})[48G[1D[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49m"[39m})[47G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mI"[39m})[48G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIn"[39m})[49G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mInc"[39m})[50G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncr"[39m})[51G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncre"[39m})[52G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrea"[39m})[53G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncreas"[39m})[54G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease"[39m})[55G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease "[39m})[56G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease t"[39m})[57G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease th"[39m})[58G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the"[39m})[59G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the "[39m})[60G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the n"[39m})[61G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the nu"[39m})[62G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the num"[39m})[63G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the numb"[39m})[64G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the numbe"[39m})[65G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number"[39m})[66G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number "[39m})[67G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number o"[39m})[68G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of"[39m})[69G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of "[39m})[70G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of t"[39m})[71G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of to"[39m})[72G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of too"[39m})[73G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tool"[39m})[74G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools"[39m})[75G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools "[39m})[76G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools i"[39m})[77G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in"[39m})[78G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in "[39m})[79G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in m"[39m})[80G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my"[39m})[81G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my "[39m})[82G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my t"[39m})[83G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my to"[39m})[84G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my too"[39m})[85G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my tool"[39m})[86G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my tool "[39m})[87G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my tool b"[39m})[88G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my tool be"[39m})[89G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my tool bel"[39m})[90G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my tool belt"[39m})[91G[1C[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m})[92G[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m,})[93G[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, })[94G[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, d})[95G[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [36mdo[39m}) [96G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, don})[97G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, done})[1G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m:})[2G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: })[3G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: f})[4G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: fa})[5G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: fal})[6G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: fals})[7G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[8G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: fals})[7G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: fal})[6G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: fa})[5G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: f})[4G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: })[3G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m:})[2G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, done})[1G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, don})[97G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, done})[1G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m:})[2G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m:f})[3G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m:})[2G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: })[3G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: f})[4G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: fa})[5G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: fal})[6G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: fals})[7G[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[8G[2C[1A[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[10G
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId([32m'66963add9c5acb83b5f3f54e'[39m)
+}
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[10G[1A[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId([32m'66962fc9d4d4a2fc5df3f54e'[39m),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId([32m'66962fc9d4d4a2fc5df3f54f'[39m),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.find({})[32G[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[10G[1D[1A[1G[0Jthe_database> db.collection.insertOne[44m([49m{[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[9G[1D[1A[1G[0Jthe_database> db.collection.insertOne([44m{[49m[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[8G[1D[1A[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[7G[1D[1D[1D[1D[1D[1D[1A[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[97G[1A[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [44m[32m"[49mIncrease the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[91G[1A[1D[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[90G[1A[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt[44m"[39m[49m, [33mdone[39m: [33mfalse[39m})[46G[1A[1D[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[45G[1A[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m[44m}[49m)[39G[1A[1D[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m}[44m)[49m[38G[1A[1D[1G[0Jthe_database> db.collection.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[37G[1A[1D[1D[1D[1D[1D[1D[1D[1D[1D[1G[0Jthe_database> db.collectio.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[27G[1A[1G[0Jthe_database> db.collecti.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[26G[1A[1G[0Jthe_database> db.collect.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[25G[1A[1G[0Jthe_database> db.collec.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[24G[1A[1G[0Jthe_database> db.colle.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[23G[1A[1G[0Jthe_database> db.coll.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[22G[1A[1G[0Jthe_database> db.col.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[21G[1A[1G[0Jthe_database> db.co.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[20G[1A[1G[0Jthe_database> db.c.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m}) [19G[1A[1G[0Jthe_database> db..insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[18G[1G[0Jthe_database> db.t.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m}) [19G[1A[1G[0Jthe_database> db.to.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[20G[1A[1G[0Jthe_database> db.too.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[21G[1A[1G[0Jthe_database> db.to.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[20G[1A[1G[0Jthe_database> db.tod.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[21G[1A[1G[0Jthe_database> db.todo.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[22G[1A[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[23G[1A[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[5G
+{
+  acknowledged: [33mtrue[39m,
+  insertedId: ObjectId([32m'66963b289c5acb83b5f3f54f'[39m)
+}
+[1G[0Jthe_database> [15G[1G[0Jthe_database> db.todos.insertOne({[33mtext[39m: [32m"Increase the number of tools in my tool belt"[39m, [33mdone[39m: [33mfalse[39m})[5G[1A[1G[0Jthe_database> db.todos.find({})[32G
+[
+  {
+    _id: ObjectId([32m'66962fc9d4d4a2fc5df3f54e'[39m),
+    text: [32m'Write code'[39m,
+    done: [33mtrue[39m
+  },
+  {
+    _id: ObjectId([32m'66962fc9d4d4a2fc5df3f54f'[39m),
+    text: [32m'Learn about containers'[39m,
+    done: [33mfalse[39m
+  },
+  {
+    _id: ObjectId([32m'66963b289c5acb83b5f3f54f'[39m),
+    text: [32m'Increase the number of tools in my tool belt'[39m,
+    done: [33mfalse[39m
+  }
+]
+[1G[0Jthe_database> [15Gexit[1G[0Jthe_database> exi[18G[1G[0Jthe_database> ex[17G[1G[0Jthe_database> e[16G[1G[0Jthe_database> [15Gexit
+[?2004hroot@c19556198e8d:/# mongosh -u root -p example[K -u root -p exampleroot@c19556198e8d:/# [Kexit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jnikolasgustavson@NikolasacStudio todo-backend % [K[?2004hdocker exec -it todo-backend-mongo-1 bash[34Dcontainer ls                      [22D[19DMONGO_URL=mongodb://root:example@localhost:3456/the_database npm run dev[K
+[K[K[A[A[48Cdocker-compose -f docker-compose.dev.yml up -d[K[1B[K[1B[K[A[A[48CMONGO_URL=mongodb://root:example@localhost:3456/the_database npm run dev[1B[K[A[A[48Cdocker container ls[K[1B[K[1B[K[A[A[67C[12Dexec -it todo-backend-mongo-1 bash[41D                                         [41Dccommit     c  ddocker container ls[?2004l[1BCONTAINER ID   IMAGE     COMMAND                  CREATED          STATUS          PORTS                     NAMES
+7750fe6979d8   nginx     "/docker-entrypoint.…"   21 minutes ago   Up 21 minutes   0.0.0.0:8080->80/tcp      bold_khayyam
+c19556198e8d   mongo     "docker-entrypoint.s…"   56 minutes ago   Up 56 minutes   0.0.0.0:3456->27017/tcp   todo-backend-mongo-1
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jnikolasgustavson@NikolasacStudio todo-backend % [K[?2004hddocker commit todo_ -backend-mongo-1 newestimage[?2004l
+sha256:a020ecc56a7b49bcfa4ef3b3a68f20b9652c76d349bbfe83ecb7b4eb7f94c01a
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jnikolasgustavson@NikolasacStudio todo-backend % [K[?2004hdocker commit todo-backend-mongo-1 newestimage[37Dntainer ls                           [27D[10Dmmit todo-backend-mongo-1 newestimage[37Dntainer ls                           [27D[12Dexec -it todo-backend-mongo-1 bash[34Dcontainer ls                      [22D[19DMONGO_URL=mongodb://root:example@localhost:3456/the_database npm run dev[K
+[K[K[A[A[48Cdocker-compose -f docker-compose.dev.yml up -d[K[1B[K[1B[K[A[A[94C -d  -d d -do -dw -dn -d[1C[1C[?2004l[2Bunknown shorthand flag: 'd' in -d
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jnikolasgustavson@NikolasacStudio todo-backend % [K[?2004hdocker-compose -f docker-compose.dev.yml down -d
+[K[K[A[96C  [?2004l[1B[1A[1B[0G[?25l[+] Running 0/0
+ [33m⠋[0m Container todo-backend-mongo-1  Removing                                                 [34m0.1s [0m
+[?25h[1A[1A[0G[?25l[+] Running 2/1
+ [32m✔[0m Container todo-backend-mongo-1  [32mRemoved[0m                                                  [34m0.1s [0m
+ [32m✔[0m Network todo-backend_default    [32mRemoved[0m                                                  [34m0.0s [0m
+[?25h[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jnikolasgustavson@NikolasacStudio todo-backend % [K[?2004hdocker-compose -f docker-compose.dev.yml down -d
+[K[K[A[48C[6C [3Cmit todo-backend-mongo-1 newestimage  [1B[K[A[94C[40D-[3Cpose -f docker-compose.dev.yml down -d[1B[K[K[A[96C -d  -d  -d  -d u -dp -d[?2004l[1B
+[1A[1B[0G[?25l[+] Running 0/0
+ [33m⠋[0m redis Pulling                                                                            [34m0.1s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠙[0m redis Pulling                                                                            [34m0.2s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠹[0m redis Pulling                                                                            [34m0.3s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠸[0m redis Pulling                                                                            [34m0.4s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠼[0m redis Pulling                                                                            [34m0.5s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠴[0m redis Pulling                                                                            [34m0.6s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠦[0m redis Pulling                                                                            [34m0.7s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠧[0m redis Pulling                                                                            [34m0.8s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠇[0m redis Pulling                                                                            [34m0.9s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠏[0m redis Pulling                                                                            [34m1.0s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠋[0m redis Pulling                                                                            [34m1.1s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠙[0m redis Pulling                                                                            [34m1.2s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠹[0m redis Pulling                                                                            [34m1.3s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠸[0m redis Pulling                                                                            [34m1.4s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠼[0m redis Pulling                                                                            [34m1.5s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠴[0m redis Pulling                                                                            [34m1.6s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠦[0m redis Pulling                                                                            [34m1.7s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠧[0m redis Pulling                                                                            [34m1.8s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠇[0m redis Pulling                                                                            [34m1.9s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠏[0m redis Pulling                                                                            [34m2.0s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠋[0m redis Pulling                                                                            [34m2.1s [0m
+[?25h[1A[1A[0G[?25l[+] Running 0/1
+ [33m⠙[0m redis Pulling                                                                            [34m2.2s [0m
+[?25h[1A[1A[0G[?25l[34m[+] Running 1/1[0m
+ [33m⠹[0m redis [[32m⣿[0m] Pulling                                                                        [34m2.3s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+[?25h[1A[1A[1A[0G[?25l[+] Running 1/2
+ [33m⠸[0m redis [[32m⣿⠀⠀⠀⠀⠀⠀⠀[0m] Pulling                                                                 [34m2.4s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [33m⠋[0m 3a5d33b42624 Pulling fs layer                                                          [34m0.1s [0m
+   [33m⠋[0m 96f81c67cf4d Pulling fs layer                                                          [34m0.1s [0m
+   [33m⠋[0m 03537f43b715 Pulling fs layer                                                          [34m0.1s [0m
+   [33m⠋[0m 900d7ca683b8 Waiting                                                                   [34m0.1s [0m
+   [33m⠋[0m a480a9e0429a Waiting                                                                   [34m0.1s [0m
+   [33m⠋[0m 4f4fb700ef54 Waiting                                                                   [34m0.1s [0m
+   [33m⠋[0m 97e17f15576f Waiting                                                                   [34m0.1s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 1/9
+ [33m⠼[0m redis [[32m⣿⠀⠀⠀⠀⠀⠀⠀[0m] Pulling                                                                 [34m2.5s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [33m⠙[0m 3a5d33b42624 Pulling fs layer                                                          [34m0.2s [0m
+   [33m⠙[0m 96f81c67cf4d Pulling fs layer                                                          [34m0.2s [0m
+   [33m⠙[0m 03537f43b715 Pulling fs layer                                                          [34m0.2s [0m
+   [33m⠙[0m 900d7ca683b8 Waiting                                                                   [34m0.2s [0m
+   [33m⠙[0m a480a9e0429a Waiting                                                                   [34m0.2s [0m
+   [33m⠙[0m 4f4fb700ef54 Waiting                                                                   [34m0.2s [0m
+   [33m⠙[0m 97e17f15576f Waiting                                                                   [34m0.2s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 1/9
+ [33m⠴[0m redis [[32m⣿⠀⠀⠀⠀⠀⠀⠀[0m] Pulling                                                                 [34m2.6s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [33m⠹[0m 3a5d33b42624 Pulling fs layer                                                          [34m0.3s [0m
+   [33m⠹[0m 96f81c67cf4d Pulling fs layer                                                          [34m0.3s [0m
+   [33m⠹[0m 03537f43b715 Pulling fs layer                                                          [34m0.3s [0m
+   [33m⠹[0m 900d7ca683b8 Waiting                                                                   [34m0.3s [0m
+   [33m⠹[0m a480a9e0429a Waiting                                                                   [34m0.3s [0m
+   [33m⠹[0m 4f4fb700ef54 Waiting                                                                   [34m0.3s [0m
+   [33m⠹[0m 97e17f15576f Waiting                                                                   [34m0.3s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 1/9
+ [33m⠦[0m redis [[32m⣿⠀⠀⠀⠀⠀⠀⠀[0m] Pulling                                                                 [34m2.7s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [33m⠸[0m 3a5d33b42624 Pulling fs layer                                                          [34m0.4s [0m
+   [33m⠸[0m 96f81c67cf4d Pulling fs layer                                                          [34m0.4s [0m
+   [33m⠸[0m 03537f43b715 Pulling fs layer                                                          [34m0.4s [0m
+   [33m⠸[0m 900d7ca683b8 Waiting                                                                   [34m0.4s [0m
+   [33m⠸[0m a480a9e0429a Waiting                                                                   [34m0.4s [0m
+   [33m⠸[0m 4f4fb700ef54 Waiting                                                                   [34m0.4s [0m
+   [33m⠸[0m 97e17f15576f Waiting                                                                   [34m0.4s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 1/9
+ [33m⠧[0m redis [[32m⣿⠀⠀⠀⠀⠀⠀⠀[0m] Pulling                                                                 [34m2.8s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [33m⠼[0m 3a5d33b42624 Pulling fs layer                                                          [34m0.5s [0m
+   [33m⠼[0m 96f81c67cf4d Pulling fs layer                                                          [34m0.5s [0m
+   [33m⠼[0m 03537f43b715 Pulling fs layer                                                          [34m0.5s [0m
+   [33m⠼[0m 900d7ca683b8 Waiting                                                                   [34m0.5s [0m
+   [33m⠼[0m a480a9e0429a Waiting                                                                   [34m0.5s [0m
+   [33m⠼[0m 4f4fb700ef54 Waiting                                                                   [34m0.5s [0m
+   [33m⠼[0m 97e17f15576f Waiting                                                                   [34m0.5s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 2/9
+ [33m⠇[0m redis [[32m⣿⣿⣿⠀⠀⠀⠀⠀[0m] Pulling                                                                 [34m2.9s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [33m⠴[0m 3a5d33b42624 Extracting  1.101kB/1.101kB                                               [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Download complete [32m[0m                                                        [34m0.6s [0m
+   [33m⠴[0m 03537f43b715 Pulling fs layer                                                          [34m0.6s [0m
+   [33m⠴[0m 900d7ca683b8 Waiting                                                                   [34m0.6s [0m
+   [33m⠴[0m a480a9e0429a Waiting                                                                   [34m0.6s [0m
+   [33m⠴[0m 4f4fb700ef54 Waiting                                                                   [34m0.6s [0m
+   [33m⠴[0m 97e17f15576f Waiting                                                                   [34m0.6s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 3/9
+ [33m⠏[0m redis [[32m⣿⣿⣿⠀⠀⠀⠀⠀[0m] Pulling                                                                 [34m3.0s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [33m⠦[0m 03537f43b715 Downloading  15.06kB/1.369MB                                              [34m0.7s [0m
+   [33m⠦[0m 900d7ca683b8 Waiting                                                                   [34m0.7s [0m
+   [33m⠦[0m a480a9e0429a Waiting                                                                   [34m0.7s [0m
+   [33m⠦[0m 4f4fb700ef54 Waiting                                                                   [34m0.7s [0m
+   [33m⠦[0m 97e17f15576f Waiting                                                                   [34m0.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 3/9
+ [33m⠋[0m redis [[32m⣿⣿⣿⣿⠀⠀⠀⠀[0m] Pulling                                                                 [34m3.1s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [33m⠧[0m 03537f43b715 Extracting  32.77kB/1.369MB                                               [34m0.8s [0m
+   [33m⠧[0m 900d7ca683b8 Waiting                                                                   [34m0.8s [0m
+   [33m⠧[0m a480a9e0429a Waiting                                                                   [34m0.8s [0m
+   [33m⠧[0m 4f4fb700ef54 Waiting                                                                   [34m0.8s [0m
+   [33m⠧[0m 97e17f15576f Waiting                                                                   [34m0.8s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 4/9
+ [33m⠙[0m redis [[32m⣿⣿⣿⣿⠀⠀⠀⠀[0m] Pulling                                                                 [34m3.2s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete [32m[0m                                                            [34m0.8s [0m
+   [33m⠇[0m 900d7ca683b8 Waiting                                                                   [34m0.9s [0m
+   [33m⠇[0m a480a9e0429a Waiting                                                                   [34m0.9s [0m
+   [33m⠇[0m 4f4fb700ef54 Waiting                                                                   [34m0.9s [0m
+   [33m⠇[0m 97e17f15576f Waiting                                                                   [34m0.9s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 4/9
+ [33m⠹[0m redis [[32m⣿⣿⣿⣿⠀⠀⠀⠀[0m] Pulling                                                                 [34m3.3s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete [32m[0m                                                            [34m0.8s [0m
+   [33m⠏[0m 900d7ca683b8 Waiting                                                                   [34m1.0s [0m
+   [33m⠏[0m a480a9e0429a Waiting                                                                   [34m1.0s [0m
+   [33m⠏[0m 4f4fb700ef54 Waiting                                                                   [34m1.0s [0m
+   [33m⠏[0m 97e17f15576f Waiting                                                                   [34m1.0s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 4/9
+ [33m⠸[0m redis [[32m⣿⣿⣿⣿⠀⠀⠀⠀[0m] Pulling                                                                 [34m3.4s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete [32m[0m                                                            [34m0.8s [0m
+   [33m⠋[0m 900d7ca683b8 Waiting                                                                   [34m1.1s [0m
+   [33m⠋[0m a480a9e0429a Waiting                                                                   [34m1.1s [0m
+   [33m⠋[0m 4f4fb700ef54 Waiting                                                                   [34m1.1s [0m
+   [33m⠋[0m 97e17f15576f Waiting                                                                   [34m1.1s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 5/9
+ [33m⠼[0m redis [[32m⣿⣿⣿⣿⠀⣿⠀⠀[0m] Pulling                                                                 [34m3.5s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete [32m[0m                                                            [34m0.8s [0m
+   [33m⠙[0m 900d7ca683b8 Downloading  151.3kB/14.91MB                                              [34m1.2s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [33m⠙[0m 4f4fb700ef54 Waiting                                                                   [34m1.2s [0m
+   [33m⠙[0m 97e17f15576f Waiting                                                                   [34m1.2s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 5/9
+ [33m⠴[0m redis [[32m⣿⣿⣿⣿⠀⣿⠀⠀[0m] Pulling                                                                 [34m3.6s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete [32m[0m                                                            [34m0.8s [0m
+   [33m⠹[0m 900d7ca683b8 Downloading  151.3kB/14.91MB                                              [34m1.3s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [33m⠹[0m 4f4fb700ef54 Waiting                                                                   [34m1.3s [0m
+   [33m⠹[0m 97e17f15576f Waiting                                                                   [34m1.3s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 6/9
+ [33m⠦[0m redis [[32m⣿⣿⣿⣿⠀⣿⣿⠀[0m] Pulling                                                                 [34m3.7s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete [32m[0m                                                            [34m0.8s [0m
+   [33m⠸[0m 900d7ca683b8 Downloading    806.1kB/14.91MB                                            [34m1.4s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [33m⠸[0m 97e17f15576f Waiting                                                                   [34m1.4s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 6/9
+ [33m⠧[0m redis [[32m⣿⣿⣿⣿⡀⣿⣿⠀[0m] Pulling                                                                 [34m3.8s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete [32m[0m                                                            [34m0.8s [0m
+   [33m⠼[0m 900d7ca683b8 Downloading    2.281MB/14.91MB                                            [34m1.5s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [33m⠼[0m 97e17f15576f Waiting                                                                   [34m1.5s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 6/9
+ [33m⠇[0m redis [[32m⣿⣿⣿⣿⡀⣿⣿⠀[0m] Pulling                                                                 [34m3.9s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete [32m[0m                                                            [34m0.8s [0m
+   [33m⠴[0m 900d7ca683b8 Downloading    2.772MB/14.91MB                                            [34m1.6s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [33m⠴[0m 97e17f15576f Waiting                                                                   [34m1.6s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 6/9
+ [33m⠏[0m redis [[32m⣿⣿⣿⣿⣀⣿⣿⠀[0m] Pulling                                                                 [34m4.0s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete [32m[0m                                                            [34m0.8s [0m
+   [33m⠦[0m 900d7ca683b8 Downloading    3.919MB/14.91MB                                            [34m1.7s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [33m⠦[0m 97e17f15576f Waiting                                                                   [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠋[0m redis [[32m⣿⣿⣿⣿⣀⣿⣿⣿[0m] 6.438MB / 16.29MB Pulling                                               [34m4.1s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠧[0m 900d7ca683b8 Downloading      5.066MB/14.91MB                                          [34m1.8s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠙[0m redis [[32m⣿⣿⣿⣿⣄⣿⣿⣿[0m] 7.572MB / 16.29MB Pulling                                               [34m4.2s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠇[0m 900d7ca683b8 Downloading        6.2MB/14.91MB                                          [34m1.9s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠹[0m redis [[32m⣿⣿⣿⣿⣄⣿⣿⣿[0m] 7.572MB / 16.29MB Pulling                                               [34m4.3s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠏[0m 900d7ca683b8 Downloading        6.2MB/14.91MB                                          [34m2.0s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠸[0m redis [[32m⣿⣿⣿⣿⣄⣿⣿⣿[0m] 8.706MB / 16.29MB Pulling                                               [34m4.4s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠋[0m 900d7ca683b8 Downloading      7.334MB/14.91MB                                          [34m2.1s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠼[0m redis [[32m⣿⣿⣿⣿⣄⣿⣿⣿[0m] 8.706MB / 16.29MB Pulling                                               [34m4.5s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠙[0m 900d7ca683b8 Downloading      7.334MB/14.91MB                                          [34m2.2s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠴[0m redis [[32m⣿⣿⣿⣿⣤⣿⣿⣿[0m] 8.862MB / 16.29MB Pulling                                               [34m4.6s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠹[0m 900d7ca683b8 Downloading       7.49MB/14.91MB                                          [34m2.3s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠦[0m redis [[32m⣿⣿⣿⣿⣤⣿⣿⣿[0m] 10.17MB / 16.29MB Pulling                                               [34m4.7s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠸[0m 900d7ca683b8 Downloading      8.801MB/14.91MB                                          [34m2.4s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠧[0m redis [[32m⣿⣿⣿⣿⣦⣿⣿⣿[0m] 11.32MB / 16.29MB Pulling                                               [34m4.8s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠼[0m 900d7ca683b8 Downloading      9.947MB/14.91MB                                          [34m2.5s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠇[0m redis [[32m⣿⣿⣿⣿⣦⣿⣿⣿[0m] 11.32MB / 16.29MB Pulling                                               [34m4.9s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠴[0m 900d7ca683b8 Downloading      9.947MB/14.91MB                                          [34m2.6s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠏[0m redis [[32m⣿⣿⣿⣿⣦⣿⣿⣿[0m] 11.81MB / 16.29MB Pulling                                               [34m5.0s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠦[0m 900d7ca683b8 Downloading      10.44MB/14.91MB                                          [34m2.7s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠋[0m redis [[32m⣿⣿⣿⣿⣦⣿⣿⣿[0m] 12.47MB / 16.29MB Pulling                                               [34m5.1s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠧[0m 900d7ca683b8 Downloading      11.09MB/14.91MB                                          [34m2.8s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠙[0m redis [[32m⣿⣿⣿⣿⣶⣿⣿⣿[0m] 13.61MB / 16.29MB Pulling                                               [34m5.2s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠇[0m 900d7ca683b8 Downloading      12.24MB/14.91MB                                          [34m2.9s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠹[0m redis [[32m⣿⣿⣿⣿⣷⣿⣿⣿[0m] 14.76MB / 16.29MB Pulling                                               [34m5.3s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠏[0m 900d7ca683b8 Downloading      13.39MB/14.91MB                                          [34m3.0s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠸[0m redis [[32m⣿⣿⣿⣿⣷⣿⣿⣿[0m] 14.76MB / 16.29MB Pulling                                               [34m5.4s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠋[0m 900d7ca683b8 Downloading      13.39MB/14.91MB                                          [34m3.1s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠼[0m redis [[32m⣿⣿⣿⣿⣷⣿⣿⣿[0m] 15.73MB / 16.29MB Pulling                                               [34m5.5s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠙[0m 900d7ca683b8 Downloading      14.36MB/14.91MB                                          [34m3.2s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠴[0m redis [[32m⣿⣿⣿⣿⣿⣿⣿⣿[0m] 15.73MB / 16.29MB Pulling                                               [34m5.6s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [33m⠹[0m 900d7ca683b8 Extracting       163.8kB/14.91MB                                          [34m3.3s [0m
+   [32m✔[0m a480a9e0429a Download complete [32m[0m                                                        [34m1.2s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[+] Running 7/9
+ [33m⠦[0m redis [[32m⣿⣿⣿⣿⣿⣿⣿⣿[0m] 16.29MB / 16.29MB Pulling                                               [34m5.7s [0m
+   [32m✔[0m ea235d1ccf77 Already exists  [32m[0m                                                          [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete   [32m[0m                                                          [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete   [32m[0m                                                          [34m0.8s [0m
+   [32m✔[0m 900d7ca683b8 Pull complete   [32m[0m                                                          [34m3.4s [0m
+   [33m⠙[0m a480a9e0429a Extracting           97B/97B                                              [34m3.4s [0m
+   [32m✔[0m 4f4fb700ef54 Download complete [32m[0m                                                        [34m1.3s [0m
+   [32m✔[0m 97e17f15576f Download complete [32m[0m                                                        [34m1.7s [0m
+[?25h[1A[1A[1A[1A[1A[1A[1A[1A[1A[1A[0G[?25l[34m[+] Running 9/9[0m
+ [32m✔[0m redis Pulled             [32m[0m                                                                [34m5.7s [0m
+   [32m✔[0m ea235d1ccf77 Already exists [32m[0m                                                           [34m0.0s [0m
+   [32m✔[0m 3a5d33b42624 Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 96f81c67cf4d Pull complete [32m[0m                                                            [34m0.6s [0m
+   [32m✔[0m 03537f43b715 Pull complete [32m[0m                                                            [34m0.8s [0m
+   [32m✔[0m 900d7ca683b8 Pull complete [32m[0m                                                            [34m3.4s [0m
+   [32m✔[0m a480a9e0429a Pull complete [32m[0m                                                            [34m3.4s [0m
+   [32m✔[0m 4f4fb700ef54 Pull complete [32m[0m                                                            [34m3.4s [0m
+   [32m✔[0m 97e17f15576f Pull complete [32m[0m                                                            [34m3.4s [0m
+[?25h[1A[1B[0G[?25l[+] Running 1/0
+ [32m✔[0m Network todo-backend_default    [32mCreated[0m                                                  [34m0.0s [0m
+ [33m⠋[0m Container todo-backend-redis-1  Creating                                                 [34m0.0s [0m
+ [33m⠋[0m Container todo-backend-mongo-1  Creating                                                 [34m0.0s [0m
+[?25h[1A[1A[1A[1A[0G[?25l[+] Running 1/3
+ [32m✔[0m Network todo-backend_default    [32mCreated[0m                                                  [34m0.0s [0m
+ [33m⠙[0m Container todo-backend-redis-1  Starting                                                 [34m0.1s [0m
+ [33m⠙[0m Container todo-backend-mongo-1  Starting                                                 [34m0.1s [0m
+[?25h[1A[1A[1A[1A[0G[?25l[+] Running 1/3
+ [32m✔[0m Network todo-backend_default    [32mCreated[0m                                                  [34m0.0s [0m
+ [33m⠹[0m Container todo-backend-redis-1  Starting                                                 [34m0.2s [0m
+ [33m⠹[0m Container todo-backend-mongo-1  Starting                                                 [34m0.2s [0m
+[?25h[1A[1A[1A[1A[0G[?25l[34m[+] Running 3/3[0m
+ [32m✔[0m Network todo-backend_default    [32mCreated[0m                                                  [34m0.0s [0m
+ [32m✔[0m Container todo-backend-redis-1  [32mStarted[0m                                                  [34m0.3s [0m
+ [32m✔[0m Container todo-backend-mongo-1  [32mStarted[0m                                                  [34m0.3s [0m
+[?25h[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jnikolasgustavson@NikolasacStudio todo-backend % [K[?2004h[7mredis://localhost:6379[27m
+[K[A[48C[27mr[27me[27md[27mi[27ms[27m:[27m/[27m/[27ml[27mo[27mc[27ma[27ml[27mh[27mo[27ms[27mt[27m:[27m6[27m3[27m7[27m9[1B[K[?2004l
+zsh: no such file or directory: redis://localhost:6379
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jnikolasgustavson@NikolasacStudio todo-backend % [K[?2004hRREDIS_URL=[7mredis://localhost:6379[27m
+[K[A[58C[27mr[27me[27md[27mi[27ms[27m:[27m/[27m/[27ml[27mo[27mc[27ma[27ml[27mh[27mo[27ms[27mt[27m:[27m6[27m3[27m7[27m9[1B[K[A[80C[?2004l[1B
+[1m[7m%[27m[1m[0m                                                                                                 [0m[27m[24m[Jnikolasgustavson@NikolasacStudio todo-backend % [K[?2004heexit[?2004l
+
+Script done on Tue Jul 16 12:47:20 2024
